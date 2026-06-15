@@ -1,5 +1,3 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
 # dependencies
 /node_modules
 /.pnp
@@ -19,23 +17,43 @@
 
 # production
 /build
+/dist
 
-# misc
-.DS_Store
-*.pem
+# env — commite apenas o .env.example
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
 
-# debug
+# debug / logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
+*.log
 
-# env files (can opt-in for committing if needed)
-.env*
+# misc
+.DS_Store
+Thumbs.db
+*.pem
 
-# vercel
+# IDEs
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# deploy
 .vercel
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# claude code (arquivos internos da ferramenta)
+CLAUDE.md
+AGENTS.md
