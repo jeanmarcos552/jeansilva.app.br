@@ -75,23 +75,23 @@ jobs:
             IMAGE="ghcr.io/$GH_REPO:latest"
 
             echo "→ Autenticando no GHCR..."
-            echo "$GHCR_TOKEN" | docker login ghcr.io -u jeanmarcos552 --password-stdin
+            echo "$GHCR_TOKEN" | sudo docker login ghcr.io -u jeanmarcos552 --password-stdin
 
             echo "→ Pulling imagem..."
-            docker pull $IMAGE
+            sudo docker pull $IMAGE
 
             echo "→ Parando container atual..."
-            docker stop portfolio 2>/dev/null || true
-            docker rm portfolio 2>/dev/null || true
+            sudo docker stop portfolio 2>/dev/null || true
+            sudo docker rm portfolio 2>/dev/null || true
 
             echo "→ Subindo novo container..."
-            docker run -d \
+            sudo docker run -d \
               --name portfolio \
               --restart unless-stopped \
               -p 3000:3000 \
               $IMAGE
 
             echo "→ Limpando imagens antigas..."
-            docker image prune -f
+            sudo docker image prune -f
 
             echo "✓ Deploy concluído."
