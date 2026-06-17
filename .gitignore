@@ -8,6 +8,9 @@
 !.yarn/releases
 !.yarn/versions
 
+# lockfile do yarn — projeto usa npm (package-lock.json)
+yarn.lock
+
 # testing
 /coverage
 
