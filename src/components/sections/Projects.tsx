@@ -8,6 +8,12 @@ const statusConfig: Record<ProjectStatus, { label: string; color: string; bg: st
     bg: "rgba(74,222,128,0.08)",
     border: "rgba(74,222,128,0.2)",
   },
+  concluido: {
+    label: "Concluído · em evolução",
+    color: "#38bdf8",
+    bg: "rgba(56,189,248,0.08)",
+    border: "rgba(56,189,248,0.2)",
+  },
   "em-desenvolvimento": {
     label: "Em desenvolvimento",
     color: "#facc15",
@@ -130,6 +136,47 @@ export function Projects() {
               <p style={{ fontSize: "0.875rem", color: "var(--muted)", lineHeight: 1.65, marginBottom: "1rem" }}>
                 {project.description}
               </p>
+
+              {project.highlights && (
+                <ul
+                  style={{
+                    listStyle: "none",
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: "0.5rem",
+                    margin: 0,
+                    marginBottom: "1rem",
+                    padding: 0,
+                  }}
+                >
+                  {project.highlights.map((highlight) => (
+                    <li
+                      key={highlight}
+                      style={{
+                        display: "flex",
+                        gap: "0.5rem",
+                        fontSize: "0.8125rem",
+                        color: "var(--muted)",
+                        lineHeight: 1.6,
+                      }}
+                    >
+                      <svg
+                        width="14"
+                        height="14"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="var(--accent)"
+                        strokeWidth="2.5"
+                        style={{ flexShrink: 0, marginTop: "0.2rem" }}
+                        aria-hidden="true"
+                      >
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span>{highlight}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
 
               <div style={{ display: "flex", flexWrap: "wrap", gap: "0.375rem" }}>
                 {project.stack.map((tech) => (

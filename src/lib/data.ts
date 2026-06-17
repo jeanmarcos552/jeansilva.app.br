@@ -1,14 +1,15 @@
 export const personal = {
   name: "Jean Marcos",
   fullName: "Jean Marcos Vieira da Silva",
-  title: "Desenvolvedor Sênior",
-  stack: ["React Native", "React", "TypeScript"],
+  title: "Product Engineer",
+  stack: ["Node.js, TypeScript, React, Next.js, NestJS", "AI, LLMs & Agents", "Mobile & Web"],
   location: "Goiânia, GO",
   email: "jean.silva552@gmail.com",
   github: "https://github.com/jeanmarcos552",
   linkedin: "https://www.linkedin.com/in/jean-marcos-full-stack/",
   summary:
-    "Desenvolvedor com mais de 10 anos de experiência em produtos digitais em produção. Focado em React Native e React desde 2018, TypeScript como padrão. Coordeno tecnicamente times de até 6 pessoas com foco em mentoria, code review e cultura de qualidade.",
+    "Engenheiro Full Stack com 10+ anos de experiência construindo aplicações web e mobile de alta performance — do backend robusto à interface que o usuário realmente usa.",
+  openToWork: "Aberto a oportunidades remotas, híbridas ou presenciais em Goiânia.",
 }
 
 export const stats = [
@@ -16,6 +17,12 @@ export const stats = [
   { value: "10k+", label: "usuários ativos" },
   { value: "2.8 → 4.0", label: "avaliação nas lojas" },
   { value: "6", label: "devs liderados" },
+]
+
+export const achievements = [
+  "Aplicações mobile publicadas em produção.",
+  "Refatoração de sistemas legados em PHP puro para Laravel moderno.",
+  "Integração de câmera, QR Code e leitura facial em apps React Native.",
 ]
 
 export const skills = [
@@ -98,34 +105,54 @@ export const experiences = [
   },
 ]
 
-export type ProjectStatus = "online" | "em-desenvolvimento" | "em-breve"
+export type ProjectStatus = "online" | "concluido" | "em-desenvolvimento" | "em-breve"
 
-export const projects = [
+export type Project = {
+  title: string
+  description: string
+  stack: string[]
+  status: ProjectStatus
+  github: string | null
+  live: string | null
+  highlights?: string[]
+}
+
+export const projects: Project[] = [
   {
     title: "Portfolio",
     description:
       "Este site. Construído com Next.js 16, TypeScript e Tailwind CSS. Deploy automatizado na Vercel.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    status: "online" as ProjectStatus,
+    status: "online",
     github: "https://github.com/jeanmarcos552/portfolio",
     live: null,
   },
   {
-    title: "Finance Tracker Mobile",
+    title: "Design System Mobile",
     description:
-      "App mobile para controle financeiro com autenticação, gráficos, push notifications e deep linking.",
-    stack: ["React Native", "Expo", "Zustand", "Supabase", "TypeScript"],
-    status: "em-desenvolvimento" as ProjectStatus,
-    github: "https://github.com/jeanmarcos552/jean-app-front",
+      "Biblioteca de UI própria que serve de base para um app financeiro em React Native: 40+ componentes tipados, temáveis e composáveis, pensados para escalar features com consistência e velocidade.",
+    highlights: [
+      "Compound Components no Card (Card.Root, Card.Header, Card.Content, Card.Badge, Card.Collapsible) — composição flexível, sem prop drilling.",
+      "API de formulários namespaced (Input.Text, Input.Select, Input.Date, Input.Radio, Input.Switch) integrada a react-hook-form + Zod.",
+      "Sistema de tema tipado com variantes de fundo, borda e sombra; animações fluidas com Reanimated e TypeScript strict.",
+    ],
+    stack: ["React Native", "TypeScript", "Compound Components", "react-hook-form", "Zod", "Reanimated"],
+    status: "concluido",
+    github: "https://github.com/jeanmarcos552/jean-app-front/tree/main/src/components/ui",
     live: null,
   },
   {
-    title: "Dashboard Financeiro",
+    title: "WebSocket Boilerplate",
     description:
-      "API REST com NestJS + Prisma e frontend Next.js com autenticação, gráficos e Docker Compose.",
-    stack: ["NestJS", "Prisma", "Next.js", "PostgreSQL", "Docker"],
-    status: "em-desenvolvimento" as ProjectStatus,
-    github: "https://github.com/jeanmarcos552/finances-node",
+      "Boilerplate de servidor WebSocket em tempo real com Node.js, TypeScript, Express e Socket.IO. Arquitetura em camadas pronta para produção, usada para broadcast de check-in de eventos (Laravel → React Native).",
+    highlights: [
+      "Arquitetura em camadas (controllers, services, repositories e validators sobre um core de infraestrutura) inspirada em Clean Architecture.",
+      "Autenticação de sockets via JWT (middleware) com salas por evento e endpoint REST protegido por X-API-KEY para broadcast server-to-server.",
+      "Pronto para produção: Docker/Compose, Nginx com WSS/TLS, Helmet, logging estruturado com Pino e healthcheck.",
+    ],
+    stack: ["Node.js", "TypeScript", "Socket.IO", "Express", "JWT", "Docker"],
+    status: "concluido",
+    github: "https://github.com/jeanmarcos552/node-ws-boilerplate",
     live: null,
   },
   {
@@ -133,7 +160,7 @@ export const projects = [
     description:
       "Agente de IA que analisa compatibilidade entre currículo e vaga com streaming de resposta em tempo real.",
     stack: ["Next.js", "TypeScript", "Claude API", "Tailwind CSS"],
-    status: "em-breve" as ProjectStatus,
+    status: "em-breve",
     github: null,
     live: null,
   },

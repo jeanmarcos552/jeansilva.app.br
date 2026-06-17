@@ -1,4 +1,4 @@
-import { stats } from "@/lib/data"
+import { stats, achievements } from "@/lib/data"
 
 export function About() {
   return (
@@ -23,12 +23,51 @@ export function About() {
         passei a focar principalmente em React Native.
       </p>
 
-      <p style={{ fontSize: "1rem", lineHeight: 1.8, color: "var(--muted)", marginBottom: "3rem" }}>
-        Hoje, além de codar, coordeno tecnicamente times de até 6 pessoas — mentorando, fazendo code review e
-        construindo processos de qualidade. Minha maior entrega recente foi elevar a avaliação do{" "}
-        <strong style={{ color: "var(--text)" }}>App do Formando</strong> de 2.8 para 4.0 nas lojas, com mais de
-        10 mil usuários ativos.
+      <p style={{ fontSize: "1rem", lineHeight: 1.8, color: "var(--muted)", marginBottom: "1.5rem" }}>
+        Atualmente na <strong style={{ color: "var(--text)" }}>B2</strong>, lidero o desenvolvimento de aplicações
+        React Native e web com Laravel, entregando soluções escaláveis para times multifuncionais. Já passei por
+        startups e agências, o que me deu visão ampla: sei escrever código limpo, refatorar legado e fazer escolhas
+        técnicas que fazem sentido pro negócio.
       </p>
+
+      <ul
+        style={{
+          listStyle: "none",
+          display: "flex",
+          flexDirection: "column",
+          gap: "0.625rem",
+          margin: 0,
+          marginBottom: "3rem",
+          padding: 0,
+        }}
+      >
+        {achievements.map((item) => (
+          <li
+            key={item}
+            style={{
+              display: "flex",
+              gap: "0.625rem",
+              fontSize: "0.9375rem",
+              color: "var(--muted)",
+              lineHeight: 1.6,
+            }}
+          >
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="var(--accent)"
+              strokeWidth="2.5"
+              style={{ flexShrink: 0, marginTop: "0.15rem" }}
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+            </svg>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
 
       <div
         style={{
