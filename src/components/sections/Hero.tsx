@@ -15,6 +15,26 @@ export function Hero() {
       }}
     >
       <div style={{ paddingTop: "56px" }}>
+        <div style={{ marginBottom: "1.5rem" }}>
+          <span
+            style={{
+              display: "inline-flex",
+              alignItems: "center",
+              gap: "0.5rem",
+              fontFamily: "var(--font-geist-mono)",
+              fontSize: "0.75rem",
+              padding: "0.35rem 0.75rem",
+              backgroundColor: "rgba(74,222,128,0.08)",
+              color: "#4ade80",
+              border: "1px solid rgba(74,222,128,0.2)",
+              borderRadius: "999px",
+            }}
+          >
+            <span style={{ width: "7px", height: "7px", borderRadius: "50%", backgroundColor: "#4ade80" }} />
+            {personal.openToWork}
+          </span>
+        </div>
+
         <p
           style={{
             fontFamily: "var(--font-geist-mono)",
@@ -50,11 +70,11 @@ export function Hero() {
             lineHeight: 1.3,
           }}
         >
-          {personal.title} ·{" "}
-          {personal.stack.map((s, i) => (
+          {personal.title}
+          {personal.stack.map((s) => (
             <span key={s}>
+              <span style={{ color: "var(--border)" }}> | </span>
               <span style={{ color: "var(--text)" }}>{s}</span>
-              {i < personal.stack.length - 1 && <span style={{ color: "var(--border)" }}> / </span>}
             </span>
           ))}
         </h2>

@@ -1,14 +1,15 @@
 export const personal = {
   name: "Jean Marcos",
   fullName: "Jean Marcos Vieira da Silva",
-  title: "Desenvolvedor Sênior",
-  stack: ["React Native", "React", "TypeScript"],
+  title: "Product Engineer",
+  stack: ["Node.js, TypeScript, React, Next.js, NestJS", "AI, LLMs & Agents", "Mobile & Web"],
   location: "Goiânia, GO",
   email: "jean.silva552@gmail.com",
   github: "https://github.com/jeanmarcos552",
   linkedin: "https://www.linkedin.com/in/jean-marcos-full-stack/",
   summary:
-    "Desenvolvedor com mais de 10 anos de experiência em produtos digitais em produção. Focado em React Native e React desde 2018, TypeScript como padrão. Coordeno tecnicamente times de até 6 pessoas com foco em mentoria, code review e cultura de qualidade.",
+    "Engenheiro Full Stack com 10+ anos de experiência construindo aplicações web e mobile de alta performance — do backend robusto à interface que o usuário realmente usa.",
+  openToWork: "Aberto a oportunidades remotas, híbridas ou presenciais em Goiânia.",
 }
 
 export const stats = [
@@ -16,6 +17,12 @@ export const stats = [
   { value: "10k+", label: "usuários ativos" },
   { value: "2.8 → 4.0", label: "avaliação nas lojas" },
   { value: "6", label: "devs liderados" },
+]
+
+export const achievements = [
+  "Aplicações mobile publicadas em produção.",
+  "Refatoração de sistemas legados em PHP puro para Laravel moderno.",
+  "Integração de câmera, QR Code e leitura facial em apps React Native.",
 ]
 
 export const skills = [
