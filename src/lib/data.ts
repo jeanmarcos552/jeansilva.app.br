@@ -98,25 +98,40 @@ export const experiences = [
   },
 ]
 
-export type ProjectStatus = "online" | "em-desenvolvimento" | "em-breve"
+export type ProjectStatus = "online" | "concluido" | "em-desenvolvimento" | "em-breve"
 
-export const projects = [
+export type Project = {
+  title: string
+  description: string
+  stack: string[]
+  status: ProjectStatus
+  github: string | null
+  live: string | null
+  highlights?: string[]
+}
+
+export const projects: Project[] = [
   {
     title: "Portfolio",
     description:
       "Este site. Construído com Next.js 16, TypeScript e Tailwind CSS. Deploy automatizado na Vercel.",
     stack: ["Next.js", "TypeScript", "Tailwind CSS"],
-    status: "online" as ProjectStatus,
+    status: "online",
     github: "https://github.com/jeanmarcos552/portfolio",
     live: null,
   },
   {
-    title: "Finance Tracker Mobile",
+    title: "Design System Mobile",
     description:
-      "App mobile para controle financeiro com autenticação, gráficos, push notifications e deep linking.",
-    stack: ["React Native", "Expo", "Zustand", "Supabase", "TypeScript"],
-    status: "em-desenvolvimento" as ProjectStatus,
-    github: "https://github.com/jeanmarcos552/jean-app-front",
+      "Biblioteca de UI própria que serve de base para um app financeiro em React Native: 40+ componentes tipados, temáveis e composáveis, pensados para escalar features com consistência e velocidade.",
+    highlights: [
+      "Compound Components no Card (Card.Root, Card.Header, Card.Content, Card.Badge, Card.Collapsible) — composição flexível, sem prop drilling.",
+      "API de formulários namespaced (Input.Text, Input.Select, Input.Date, Input.Radio, Input.Switch) integrada a react-hook-form + Zod.",
+      "Sistema de tema tipado com variantes de fundo, borda e sombra; animações fluidas com Reanimated e TypeScript strict.",
+    ],
+    stack: ["React Native", "TypeScript", "Compound Components", "react-hook-form", "Zod", "Reanimated"],
+    status: "concluido",
+    github: "https://github.com/jeanmarcos552/jean-app-front/tree/main/src/components/ui",
     live: null,
   },
   {
@@ -124,7 +139,7 @@ export const projects = [
     description:
       "API REST com NestJS + Prisma e frontend Next.js com autenticação, gráficos e Docker Compose.",
     stack: ["NestJS", "Prisma", "Next.js", "PostgreSQL", "Docker"],
-    status: "em-desenvolvimento" as ProjectStatus,
+    status: "em-desenvolvimento",
     github: "https://github.com/jeanmarcos552/finances-node",
     live: null,
   },
@@ -133,7 +148,7 @@ export const projects = [
     description:
       "Agente de IA que analisa compatibilidade entre currículo e vaga com streaming de resposta em tempo real.",
     stack: ["Next.js", "TypeScript", "Claude API", "Tailwind CSS"],
-    status: "em-breve" as ProjectStatus,
+    status: "em-breve",
     github: null,
     live: null,
   },
