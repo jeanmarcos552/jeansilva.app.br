@@ -149,15 +149,6 @@ export const projects: Project[] = [
     live: null,
   },
   {
-    title: "Dashboard Financeiro",
-    description:
-      "API REST com NestJS + Prisma e frontend Next.js com autenticação, gráficos e Docker Compose.",
-    stack: ["NestJS", "Prisma", "Next.js", "PostgreSQL", "Docker"],
-    status: "em-desenvolvimento",
-    github: "https://github.com/jeanmarcos552/finances-node",
-    live: null,
-  },
-  {
     title: "CV Reviewer Agent",
     description:
       "Agente de IA que analisa compatibilidade entre currículo e vaga com streaming de resposta em tempo real.",
