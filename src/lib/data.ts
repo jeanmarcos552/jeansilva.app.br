@@ -135,6 +135,20 @@ export const projects: Project[] = [
     live: null,
   },
   {
+    title: "WebSocket Boilerplate",
+    description:
+      "Boilerplate de servidor WebSocket em tempo real com Node.js, TypeScript, Express e Socket.IO. Arquitetura em camadas pronta para produção, usada para broadcast de check-in de eventos (Laravel → React Native).",
+    highlights: [
+      "Arquitetura em camadas (controllers, services, repositories e validators sobre um core de infraestrutura) inspirada em Clean Architecture.",
+      "Autenticação de sockets via JWT (middleware) com salas por evento e endpoint REST protegido por X-API-KEY para broadcast server-to-server.",
+      "Pronto para produção: Docker/Compose, Nginx com WSS/TLS, Helmet, logging estruturado com Pino e healthcheck.",
+    ],
+    stack: ["Node.js", "TypeScript", "Socket.IO", "Express", "JWT", "Docker"],
+    status: "concluido",
+    github: "https://github.com/jeanmarcos552/node-ws-boilerplate",
+    live: null,
+  },
+  {
     title: "Dashboard Financeiro",
     description:
       "API REST com NestJS + Prisma e frontend Next.js com autenticação, gráficos e Docker Compose.",
