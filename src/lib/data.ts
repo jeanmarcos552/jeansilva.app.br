@@ -1,8 +1,8 @@
 export const personal = {
   name: "Jean Marcos",
   fullName: "Jean Marcos Vieira da Silva",
-  title: "Product Engineer",
-  stack: ["Node.js, TypeScript, React, Next.js, NestJS", "AI, LLMs & Agents", "Mobile & Web"],
+  title: "Engenheiro de Software Sênior",
+  stack: ["React Native & React · TypeScript", "IA & Agentes", "10+ anos de experiência"],
   location: "Goiânia, GO",
   email: "jean.silva552@gmail.com",
   github: "https://github.com/jeanmarcos552",
