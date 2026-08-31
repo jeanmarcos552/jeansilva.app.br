@@ -1,0 +1,55 @@
+name: Monitor SSL
+
+# Alerta quando a renovação automática do Let's Encrypt parar de funcionar.
+# Roda de fora do servidor, então cobre a cadeia inteira: DNS, nginx e certificado.
+# Se um job falhar, o GitHub notifica por e-mail automaticamente.
+
+on:
+  schedule:
+    - cron: '17 6 * * *'
+  workflow_dispatch:
+
+jobs:
+  check:
+    name: Verificar validade dos certificados
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checar expiração e handshake TLS
+        run: |
+          set -u
+
+          # O certbot renova faltando 30 dias. Abaixo de 21 significa que a
+          # renovação já vem falhando há uns 9 dias — sobra folga para agir.
+          LIMITE=21
+          FALHOU=0
+
+          for HOST in jeansilva.app.br ws.jeansilva.app.br bolao.jeansilva.app.br; do
+            FIM=$(echo | openssl s_client -servername "$HOST" -connect "$HOST:443" 2>/dev/null \
+                  | openssl x509 -noout -enddate 2>/dev/null | cut -d= -f2)
+
+            if [ -z "$FIM" ]; then
+              echo "::error title=$HOST::nao foi possivel ler o certificado (host fora do ar ou TLS quebrado)"
+              FALHOU=1
+              continue
+            fi
+
+            DIAS=$(( ( $(date -d "$FIM" +%s) - $(date +%s) ) / 86400 ))
+
+            # Sem --fail de proposito: aqui so interessa o TLS, nao o status HTTP.
+            if ! curl -sS --max-time 20 -o /dev/null "https://$HOST/" 2>/dev/null; then
+              echo "::error title=$HOST::a cadeia TLS nao validou para um cliente comum"
+              FALHOU=1
+            fi
+
+            if [ "$DIAS" -lt 0 ]; then
+              echo "::error title=$HOST::certificado VENCIDO ha $(( -DIAS )) dia(s) — expirou em $FIM"
+              FALHOU=1
+            elif [ "$DIAS" -lt "$LIMITE" ]; then
+              echo "::error title=$HOST::faltam $DIAS dia(s) para vencer ($FIM) e ainda nao renovou — a renovacao automatica provavelmente esta falhando"
+              FALHOU=1
+            else
+              echo "OK $HOST — $DIAS dias restantes (vence em $FIM)"
+            fi
+          done
+
+          exit $FALHOU
